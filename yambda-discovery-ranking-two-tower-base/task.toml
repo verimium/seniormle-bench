@@ -1,0 +1,59 @@
+schema_version = "1.4"
+
+artifacts = ["/app/solution"]
+
+[task]
+name = "pitch/yambda-discovery-ranking-two-tower-base"
+version = "1.0.0"
+description = "Build a materially better music-discovery ranker from a strong two-tower baseline."
+authors = []
+keywords = ["machine-learning", "ranking", "recommendation", "two-tower", "yambda"]
+
+[metadata]
+family = "yambda-discovery-ranking-two-tower"
+instance = "base"
+difficulty = "hard"
+category = "machine-learning"
+
+[metadata.runtime]
+python_version = "3.12.13"
+
+[metadata.verifier.thresholds]
+"quality_ndcg@10" = 0.025
+
+[agent]
+timeout_sec = 600.0
+user = "agent"
+network_mode = "allowlist"
+allowed_hosts = [
+  "anthropic.com",
+  "*.anthropic.com",
+  "claude.ai",
+  "*.claude.ai",
+  "openai.com",
+  "*.openai.com",
+  "chatgpt.com",
+  "*.chatgpt.com",
+]
+
+[verifier]
+timeout_sec = 180.0
+environment_mode = "separate"
+
+[verifier.environment]
+network_mode = "no-network"
+build_timeout_sec = 1800.0
+workdir = "/app"
+cpus = 2
+memory_mb = 4096
+storage_mb = 10240
+gpus = 0
+
+[environment]
+network_mode = "public"
+build_timeout_sec = 1800.0
+workdir = "/app"
+cpus = 8
+memory_mb = 8192
+storage_mb = 20480
+gpus = 0
