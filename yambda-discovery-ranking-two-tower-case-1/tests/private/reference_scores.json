@@ -1,0 +1,269 @@
+{
+  "public_validation": {
+    "popularity_on_eligible_candidates": {
+      "quality_ndcg@10": 0.01071,
+      "quality_users": 4263,
+      "passes_provisional_gate": false
+    },
+    "regressed_oldest_window_two_tower": {
+      "quality_ndcg@10": 0.008489,
+      "quality_users": 4263,
+      "passes_provisional_gate": false,
+      "runtime_seconds": 117.614,
+      "model": {
+        "architecture": {
+          "family": "pure-windowed-sequence-two-tower",
+          "sequence_training": "every-adjacent-target-within-recent-chronological-window",
+          "sequence_encoder": "one-layer-GRU-dense-timestep-loss",
+          "bptt_hidden_state": "carried-and-detached",
+          "model_selection": "chronological-validation-BCE-early-stopping",
+          "loss_execution": "gradient-accumulated-microbatches",
+          "user_id_embedding": false,
+          "user_mlp": "582-512-256-192",
+          "item_mlp": "196-512-256-192",
+          "normalization": "none",
+          "score": "raw-dot-product",
+          "objective": "sample-weighted-BCE-at-every-timestep",
+          "negative_sampling": "24-uniform-plus-8-propensity-corrected-inbatch",
+          "false_negative_filter": "full-training-history",
+          "target_weighting": "organic-strong"
+        },
+        "config": {
+          "bptt_steps": 100,
+          "user_batch_size": 64,
+          "embedding_dim": 192,
+          "hidden_dim": 192,
+          "user_hidden_1": 512,
+          "user_hidden_2": 256,
+          "item_hidden_1": 512,
+          "item_hidden_2": 256,
+          "dropout": 0.05,
+          "epochs": 1,
+          "learning_rate": 0.001,
+          "weight_decay": 1e-05,
+          "gradient_clip": 2.0,
+          "loss_microbatch_size": 65536,
+          "uniform_negatives": 24,
+          "inbatch_negatives": 8,
+          "inbatch_correction_power": 0.5,
+          "inbatch_correction_min": 0.25,
+          "inbatch_correction_max": 4.0,
+          "negative_filter_scope": "full-training-history",
+          "target_weighting": "organic-strong",
+          "ordinary_target_weight": 0.25,
+          "organic_strong_target_weight": 1.0,
+          "organic_like_target_weight": 3.0,
+          "discovery_horizon_days": 7,
+          "validation_fraction": 0.1,
+          "max_train_targets_per_user": 128,
+          "max_validation_targets_per_user": 16,
+          "early_stopping_patience": 1,
+          "early_stopping_min_delta": 0.0001,
+          "seed": 29
+        }
+      },
+      "input_scope": [
+        "environment/public/data"
+      ],
+      "label_blind": true
+    },
+    "repaired_recent_window_two_tower": {
+      "quality_ndcg@10": 0.019724,
+      "quality_users": 4263,
+      "passes_provisional_gate": true,
+      "runtime_seconds": 132.672,
+      "model": {
+        "architecture": {
+          "family": "pure-windowed-sequence-two-tower",
+          "sequence_training": "every-adjacent-target-within-recent-chronological-window",
+          "sequence_encoder": "one-layer-GRU-dense-timestep-loss",
+          "bptt_hidden_state": "carried-and-detached",
+          "model_selection": "chronological-validation-BCE-early-stopping",
+          "loss_execution": "gradient-accumulated-microbatches",
+          "user_id_embedding": false,
+          "user_mlp": "582-512-256-192",
+          "item_mlp": "196-512-256-192",
+          "normalization": "none",
+          "score": "raw-dot-product",
+          "objective": "sample-weighted-BCE-at-every-timestep",
+          "negative_sampling": "24-uniform-plus-8-propensity-corrected-inbatch",
+          "false_negative_filter": "full-training-history",
+          "target_weighting": "organic-strong"
+        },
+        "config": {
+          "bptt_steps": 100,
+          "user_batch_size": 64,
+          "embedding_dim": 192,
+          "hidden_dim": 192,
+          "user_hidden_1": 512,
+          "user_hidden_2": 256,
+          "item_hidden_1": 512,
+          "item_hidden_2": 256,
+          "dropout": 0.05,
+          "epochs": 1,
+          "learning_rate": 0.001,
+          "weight_decay": 1e-05,
+          "gradient_clip": 2.0,
+          "loss_microbatch_size": 65536,
+          "uniform_negatives": 24,
+          "inbatch_negatives": 8,
+          "inbatch_correction_power": 0.5,
+          "inbatch_correction_min": 0.25,
+          "inbatch_correction_max": 4.0,
+          "negative_filter_scope": "full-training-history",
+          "target_weighting": "organic-strong",
+          "ordinary_target_weight": 0.25,
+          "organic_strong_target_weight": 1.0,
+          "organic_like_target_weight": 3.0,
+          "discovery_horizon_days": 7,
+          "validation_fraction": 0.1,
+          "max_train_targets_per_user": 128,
+          "max_validation_targets_per_user": 16,
+          "early_stopping_patience": 1,
+          "early_stopping_min_delta": 0.0001,
+          "seed": 29
+        }
+      },
+      "input_scope": [
+        "environment/public/data"
+      ],
+      "label_blind": true
+    }
+  },
+  "hidden_test": {
+    "popularity_on_eligible_candidates": {
+      "quality_ndcg@10": 0.009092,
+      "quality_users": 3987,
+      "passes_provisional_gate": false
+    },
+    "validation_label_replay_after_submission_filter": {
+      "quality_ndcg@10": 0.009092,
+      "quality_users": 3987,
+      "passes_provisional_gate": false
+    },
+    "regressed_oldest_window_two_tower": {
+      "quality_ndcg@10": 0.006341,
+      "quality_users": 3987,
+      "passes_provisional_gate": false,
+      "runtime_seconds": 134.261,
+      "model": {
+        "architecture": {
+          "family": "pure-windowed-sequence-two-tower",
+          "sequence_training": "every-adjacent-target-within-recent-chronological-window",
+          "sequence_encoder": "one-layer-GRU-dense-timestep-loss",
+          "bptt_hidden_state": "carried-and-detached",
+          "model_selection": "chronological-validation-BCE-early-stopping",
+          "loss_execution": "gradient-accumulated-microbatches",
+          "user_id_embedding": false,
+          "user_mlp": "582-512-256-192",
+          "item_mlp": "196-512-256-192",
+          "normalization": "none",
+          "score": "raw-dot-product",
+          "objective": "sample-weighted-BCE-at-every-timestep",
+          "negative_sampling": "24-uniform-plus-8-propensity-corrected-inbatch",
+          "false_negative_filter": "full-training-history",
+          "target_weighting": "organic-strong"
+        },
+        "config": {
+          "bptt_steps": 100,
+          "user_batch_size": 64,
+          "embedding_dim": 192,
+          "hidden_dim": 192,
+          "user_hidden_1": 512,
+          "user_hidden_2": 256,
+          "item_hidden_1": 512,
+          "item_hidden_2": 256,
+          "dropout": 0.05,
+          "epochs": 1,
+          "learning_rate": 0.001,
+          "weight_decay": 1e-05,
+          "gradient_clip": 2.0,
+          "loss_microbatch_size": 65536,
+          "uniform_negatives": 24,
+          "inbatch_negatives": 8,
+          "inbatch_correction_power": 0.5,
+          "inbatch_correction_min": 0.25,
+          "inbatch_correction_max": 4.0,
+          "negative_filter_scope": "full-training-history",
+          "target_weighting": "organic-strong",
+          "ordinary_target_weight": 0.25,
+          "organic_strong_target_weight": 1.0,
+          "organic_like_target_weight": 3.0,
+          "discovery_horizon_days": 7,
+          "validation_fraction": 0.1,
+          "max_train_targets_per_user": 128,
+          "max_validation_targets_per_user": 16,
+          "early_stopping_patience": 1,
+          "early_stopping_min_delta": 0.0001,
+          "seed": 29
+        }
+      },
+      "input_scope": [
+        "environment/public/data"
+      ],
+      "label_blind": true
+    },
+    "repaired_recent_window_two_tower": {
+      "quality_ndcg@10": 0.016592,
+      "quality_users": 3987,
+      "passes_provisional_gate": true,
+      "runtime_seconds": 117.874,
+      "model": {
+        "architecture": {
+          "family": "pure-windowed-sequence-two-tower",
+          "sequence_training": "every-adjacent-target-within-recent-chronological-window",
+          "sequence_encoder": "one-layer-GRU-dense-timestep-loss",
+          "bptt_hidden_state": "carried-and-detached",
+          "model_selection": "chronological-validation-BCE-early-stopping",
+          "loss_execution": "gradient-accumulated-microbatches",
+          "user_id_embedding": false,
+          "user_mlp": "582-512-256-192",
+          "item_mlp": "196-512-256-192",
+          "normalization": "none",
+          "score": "raw-dot-product",
+          "objective": "sample-weighted-BCE-at-every-timestep",
+          "negative_sampling": "24-uniform-plus-8-propensity-corrected-inbatch",
+          "false_negative_filter": "full-training-history",
+          "target_weighting": "organic-strong"
+        },
+        "config": {
+          "bptt_steps": 100,
+          "user_batch_size": 64,
+          "embedding_dim": 192,
+          "hidden_dim": 192,
+          "user_hidden_1": 512,
+          "user_hidden_2": 256,
+          "item_hidden_1": 512,
+          "item_hidden_2": 256,
+          "dropout": 0.05,
+          "epochs": 1,
+          "learning_rate": 0.001,
+          "weight_decay": 1e-05,
+          "gradient_clip": 2.0,
+          "loss_microbatch_size": 65536,
+          "uniform_negatives": 24,
+          "inbatch_negatives": 8,
+          "inbatch_correction_power": 0.5,
+          "inbatch_correction_min": 0.25,
+          "inbatch_correction_max": 4.0,
+          "negative_filter_scope": "full-training-history",
+          "target_weighting": "organic-strong",
+          "ordinary_target_weight": 0.25,
+          "organic_strong_target_weight": 1.0,
+          "organic_like_target_weight": 3.0,
+          "discovery_horizon_days": 7,
+          "validation_fraction": 0.1,
+          "max_train_targets_per_user": 128,
+          "max_validation_targets_per_user": 16,
+          "early_stopping_patience": 1,
+          "early_stopping_min_delta": 0.0001,
+          "seed": 29
+        }
+      },
+      "input_scope": [
+        "environment/public/data"
+      ],
+      "label_blind": true
+    }
+  }
+}
