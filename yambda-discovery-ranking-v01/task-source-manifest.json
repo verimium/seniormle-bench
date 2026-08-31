@@ -1,0 +1,74 @@
+{
+  "files": {
+    "environment/Dockerfile": {
+      "executable": false,
+      "sha256": "650874ead83a6d2a889055fa32ff0ee1ffc3dda96c1cc326b9d06c1e4f81acff"
+    },
+    "environment/public/evaluate_public.py": {
+      "executable": false,
+      "sha256": "a5a5d79c1af0f6670ae86cc487f3e4474b5156747f0d20cc3b0ca4bf4d2c6514"
+    },
+    "environment/public/ranking_evaluation.py": {
+      "executable": false,
+      "sha256": "23bb55630f9a2c3ac5dad2cdbf4e77e2ce6564b16c4245026759ab5500c086e3"
+    },
+    "environment/requirements.txt": {
+      "executable": false,
+      "sha256": "534f0a7ca7d33e70ce33ba508596ea2750f7bae277a0a5a01d18911d0a25e450"
+    },
+    "instruction.md": {
+      "executable": false,
+      "sha256": "5c9b926e2ef22863deb0f84b2f0ed3523e55b577fa130bfddeade302dd500e94"
+    },
+    "solution/reference_solver.py": {
+      "executable": false,
+      "sha256": "358fe0e2b86dd81ebe1b1e330add64cb2f82535dd4ccf1f1c13955d76246f665"
+    },
+    "solution/solve.sh": {
+      "executable": true,
+      "sha256": "e54e1535e00e14bc6f97a6c18e8cbf99ffad458840ab382d66ea95eee4146349"
+    },
+    "task.toml": {
+      "executable": false,
+      "sha256": "37224782878263c168e5567013ecf4417e63ec25bc9769f37e46aeb1da7bfc3d"
+    },
+    "tests/Dockerfile": {
+      "executable": false,
+      "sha256": "24702433c9624881490bd45dabc094fe88d56092346c8f1ca7811b7d0986e44e"
+    },
+    "tests/evaluate_submission.py": {
+      "executable": false,
+      "sha256": "8fa549ab67dba5cf7f640cae22ec7481f1bfe5669e1c1daf22547d31df3786fd"
+    },
+    "tests/harbor_task.py": {
+      "executable": false,
+      "sha256": "481d88f354a25272c9097e05c6c25f14d0f9b3efab2a5d022563c7472c14cda5"
+    },
+    "tests/private/.keep": {
+      "executable": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/ranking_evaluation.py": {
+      "executable": false,
+      "sha256": "23bb55630f9a2c3ac5dad2cdbf4e77e2ce6564b16c4245026759ab5500c086e3"
+    },
+    "tests/requirements.txt": {
+      "executable": false,
+      "sha256": "534f0a7ca7d33e70ce33ba508596ea2750f7bae277a0a5a01d18911d0a25e450"
+    },
+    "tests/task.toml": {
+      "executable": false,
+      "sha256": "37224782878263c168e5567013ecf4417e63ec25bc9769f37e46aeb1da7bfc3d"
+    },
+    "tests/test.sh": {
+      "executable": true,
+      "sha256": "82f669b888692ec6789b03b150c7356ac2f0aa9450b4a2ced0596186fc35cfef"
+    },
+    "tests/verifier_result.py": {
+      "executable": false,
+      "sha256": "bed082f5d3b3de5da9275d08606ad4d6f6e4d6841db961d963413eea9fcbb0ed"
+    }
+  },
+  "schema_version": 1,
+  "task_id": "yambda-discovery-ranking-v01"
+}

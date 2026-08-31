@@ -2,70 +2,67 @@
 
 A benchmark for long-horizon machine-learning engineering agents.
 
-This repository intentionally contains task code only. Dataset files and built
-Harbor tasks are not stored in Git. `setup.sh` downloads the pinned Yambda
-source files directly from their origin, verifies their SHA-256 checksums, and
-materializes a complete task under `tasks/`.
+Each top-level directory is a complete Harbor task except for generated data.
+The task code, agent environment, verifier, oracle solution, and Harbor contract
+are stored in Git. Dataset-derived files are intentionally excluded.
 
-The source tree includes evaluator-only build inputs. Give Harbor the generated
-`tasks/<task-id>` directory; do not mount this repository itself into the agent
-environment.
+Harbor does not run setup scripts automatically. Before running a task, execute
+that task's `setup.sh`. It downloads the pinned Yambda source files directly
+from their origin, verifies their SHA-256 checksums, builds the derived inputs,
+and hydrates the same top-level task directory.
 
 ## Prerequisites
 
-- Python 3
+- Python 3.11 or newer
 - [`uv`](https://docs.astral.sh/uv/)
 - Docker
 - Harbor 0.22.0 for task execution
 
-## Build a task
-
-List the available task IDs:
+## Prepare and run a task
 
 ```sh
-./setup.sh --list
-```
+./yambda-discovery-ranking-two-tower-base/setup.sh
 
-Build one task:
-
-```sh
-./setup.sh yambda-discovery-ranking-two-tower-base
-```
-
-The first build downloads the source dataset and creates a pinned Python 3.12
-authoring environment. Later builds reuse both. The resulting Harbor task is
-written to:
-
-```text
-tasks/yambda-discovery-ranking-two-tower-base/
-```
-
-Run it with Harbor after setup completes:
-
-```sh
 harbor run \
-  --path tasks/yambda-discovery-ranking-two-tower-base \
+  --path yambda-discovery-ranking-two-tower-base \
   --agent codex \
   --model gpt-5.6-sol
 ```
 
-Additional arguments after the task ID are passed to its builder. For example,
-`--force-download` replaces the cached upstream files. `SENIORMLE_DATA_DIR`,
-`SENIORMLE_ENVS_DIR`, and `SENIORMLE_TASKS_DIR` can relocate the generated
-directories.
+The first setup creates shared `.data/` and `.venvs/` caches at the repository
+root. Later task setups reuse them. Both the caches and hydrated task data are
+ignored by Git.
+
+Builder options may be passed to the task setup. For example:
+
+```sh
+./yambda-discovery-ranking-v01/setup.sh --force-download
+```
+
+`SENIORMLE_DATA_DIR` and `SENIORMLE_ENVS_DIR` can relocate the shared caches.
 
 ## Repository layout
 
 ```text
-setup.sh                         # task bootstrap entrypoint
-source-manifest.json             # hashes for every distributed source file
-rl-environment/environments/     # deterministic task builders
-rl-environment/scripts/          # shared contracts and validators
-tasks/                           # generated locally; ignored by Git
+yambda-discovery-ranking-v01/                 # data-free Harbor task
+  task.toml
+  instruction.md
+  environment/
+  solution/
+  tests/
+  setup.sh                                    # hydrates this task in place
+yambda-discovery-ranking-two-tower-base/      # another top-level task
+yambda-discovery-ranking-two-tower-case-1/    # another top-level task
+source-manifest.json                          # exported-source hashes
+scripts/validate_distribution.py              # distribution validation
 ```
 
-Run the code-only distribution check with:
+Validate a checkout without downloading data:
 
 ```sh
 python3 scripts/validate_distribution.py .
 ```
+
+The private `mmoghimi/pitch` repository is the source of truth. Its sync
+workflow deterministically regenerates this repository and opens a pull request
+when task code changes.

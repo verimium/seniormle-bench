@@ -1,0 +1,86 @@
+{
+  "files": {
+    "environment/Dockerfile": {
+      "executable": false,
+      "sha256": "0e89b213dd4f18463f1b7a5188b2ba8ad68845ba0c2e96a246e7b1450244db93"
+    },
+    "environment/public/evaluate_public.py": {
+      "executable": false,
+      "sha256": "a5a5d79c1af0f6670ae86cc487f3e4474b5156747f0d20cc3b0ca4bf4d2c6514"
+    },
+    "environment/public/ranking_evaluation.py": {
+      "executable": false,
+      "sha256": "23bb55630f9a2c3ac5dad2cdbf4e77e2ce6564b16c4245026759ab5500c086e3"
+    },
+    "environment/public/variant/.keep": {
+      "executable": false,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "environment/requirements.txt": {
+      "executable": false,
+      "sha256": "41fb816338c7a2b817d4baba4c9459799851109010b9ed0591db05906e47cb54"
+    },
+    "instruction.md": {
+      "executable": false,
+      "sha256": "da336db1b567cbf6ecdc002db6e58fc359a41097d7d96ffafbd8654142cc7005"
+    },
+    "solution/reference_solver.py": {
+      "executable": false,
+      "sha256": "1c6dab4b61b147366ad545b434ebd39eca00d12fb57fcf733b2c5f2536b8ca6c"
+    },
+    "solution/solve.sh": {
+      "executable": true,
+      "sha256": "7cbfc48948e5bd0a449a3aa8c727df45675c6c686ee8fffce25dc8831766c6c8"
+    },
+    "solution/two_tower_model.py": {
+      "executable": false,
+      "sha256": "944adf51f9fc61fcbb8392c5c62243b9cc74b5e2ca2f403b5722967f14773f16"
+    },
+    "task.toml": {
+      "executable": false,
+      "sha256": "1865c258dada0862eb34a4caa62f367d5ebb2c3c0f232c1f023dab36ee2bf069"
+    },
+    "tests/Dockerfile": {
+      "executable": false,
+      "sha256": "a616358f34da57c974a44cb44c3bd7e17b7270aabb54a135f388265c795b5bff"
+    },
+    "tests/evaluate_submission.py": {
+      "executable": false,
+      "sha256": "8fa549ab67dba5cf7f640cae22ec7481f1bfe5669e1c1daf22547d31df3786fd"
+    },
+    "tests/harbor_task.py": {
+      "executable": false,
+      "sha256": "481d88f354a25272c9097e05c6c25f14d0f9b3efab2a5d022563c7472c14cda5"
+    },
+    "tests/private/reference_solver.py": {
+      "executable": false,
+      "sha256": "1c6dab4b61b147366ad545b434ebd39eca00d12fb57fcf733b2c5f2536b8ca6c"
+    },
+    "tests/private/two_tower_model.py": {
+      "executable": false,
+      "sha256": "944adf51f9fc61fcbb8392c5c62243b9cc74b5e2ca2f403b5722967f14773f16"
+    },
+    "tests/ranking_evaluation.py": {
+      "executable": false,
+      "sha256": "23bb55630f9a2c3ac5dad2cdbf4e77e2ce6564b16c4245026759ab5500c086e3"
+    },
+    "tests/requirements.txt": {
+      "executable": false,
+      "sha256": "41fb816338c7a2b817d4baba4c9459799851109010b9ed0591db05906e47cb54"
+    },
+    "tests/task.toml": {
+      "executable": false,
+      "sha256": "1865c258dada0862eb34a4caa62f367d5ebb2c3c0f232c1f023dab36ee2bf069"
+    },
+    "tests/test.sh": {
+      "executable": true,
+      "sha256": "82f669b888692ec6789b03b150c7356ac2f0aa9450b4a2ced0596186fc35cfef"
+    },
+    "tests/verifier_result.py": {
+      "executable": false,
+      "sha256": "bed082f5d3b3de5da9275d08606ad4d6f6e4d6841db961d963413eea9fcbb0ed"
+    }
+  },
+  "schema_version": 1,
+  "task_id": "yambda-discovery-ranking-two-tower-base"
+}

@@ -22,6 +22,8 @@ jobs:
 
       - name: Validate the code-only distribution
         run: |
-          bash -n setup.sh
-          ./setup.sh --list
+          for setup in */setup.sh; do
+            bash -n "$setup"
+            "$setup" --help >/dev/null
+          done
           python3 scripts/validate_distribution.py .

@@ -1,0 +1,107 @@
+{
+  "schema_version": 2,
+  "reference_sha256": "56d7d8fac3c72ca778ca8c261c91d173d938bc1b74955e1e28eb2c31d71eaf32",
+  "production_sha256": "63263e32b0b30c1451d68491a8a27d3f710431de8eadcd4240b5b439acad1540",
+  "replacements": [
+    {
+      "label": "negative sampling summary",
+      "reference": "normalization, raw dot-product retrieval, and sample-weighted binary cross\nentropy. Its negative term combines 24 uniform samples with an eight-negative\nequivalent loss over up to 512 unique current-block positive items after\nfalse-negative filtering. Every selected adjacent target retains a nonzero\nweight. Only files under the supplied public directory are read.\n",
+      "production": "normalization, raw dot-product retrieval, sample-weighted binary cross entropy,\nand 24 uniform plus eight propensity-corrected unique in-batch negatives. Every\nselected adjacent target retains a nonzero weight. Only files under the supplied\npublic directory are read.\n"
+    },
+    {
+      "label": "shared pool configuration",
+      "reference": "    shared_negative_pool_size: int = 512\n",
+      "production": ""
+    },
+    {
+      "label": "shared candidate encoding",
+      "reference": "def candidate_vectors_with_shared_pool(\n    model: base.SequentialTwoTower,\n    positives: torch.Tensor,\n    negatives: torch.Tensor,\n    pool_size: int,\n    generator: torch.Generator,\n) -> tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:\n    \"\"\"Encode each item once and expose current positives as a negative pool.\"\"\"\n    all_items = torch.cat([positives, negatives.reshape(-1)])\n    unique_items, inverse = torch.unique(all_items, return_inverse=True)\n    encoded = model.encode_items(unique_items)\n    positive_vectors = encoded[inverse[: len(positives)]]\n    negative_vectors = encoded[inverse[len(positives) :]].reshape(\n        len(positives), negatives.shape[1], -1\n    )\n    pool_items = torch.unique(positives)\n    pool_vectors = encoded[torch.searchsorted(unique_items, pool_items)]\n    if pool_size and len(pool_items) > pool_size:\n        selected = torch.randperm(\n            len(pool_items), generator=generator, device=\"cpu\"\n        )[:pool_size].to(pool_items.device)\n        pool_items = pool_items[selected]\n        pool_vectors = pool_vectors[selected]\n    return positive_vectors, negative_vectors, pool_items, pool_vectors\n\n\n",
+      "production": ""
+    },
+    {
+      "label": "shared false-negative filtering",
+      "reference": "\n\ndef valid_shared_negatives(\n    shared_items: torch.Tensor,\n    positive_items: torch.Tensor,\n    user_rows: np.ndarray,\n    state_ids: np.ndarray,\n    prepared: SequenceData,\n    known_positive_packed: np.ndarray | None,\n    device: torch.device,\n) -> torch.Tensor:\n    \"\"\"Return current-block items that are valid negatives for each query.\"\"\"\n    shared = shared_items.detach().cpu().numpy().astype(np.int64, copy=False)\n    positives = positive_items.detach().cpu().numpy().astype(np.int64, copy=False)\n    invalid = positives[:, None] == shared[None, :]\n    if known_positive_packed is not None:\n        byte_columns = shared >> 3\n        bit_values = np.left_shift(\n            np.uint8(1), (shared & 7).astype(np.uint8, copy=False)\n        )\n        invalid |= (\n            known_positive_packed[user_rows[:, None], byte_columns[None, :]]\n            & bit_values[None, :]\n        ) != 0\n    liked = prepared.liked_states[state_ids].astype(np.int64, copy=False)\n    for column in range(liked.shape[1]):\n        invalid |= liked[:, column, None] == shared[None, :]\n    return torch.from_numpy(~invalid).to(device)\n",
+      "production": ""
+    },
+    {
+      "label": "shared scoring inputs",
+      "reference": "    shared_generator: torch.Generator | None = None,\n    user_rows: np.ndarray | None = None,\n    known_positive_packed: np.ndarray | None = None,\n    item_correction: torch.Tensor | None = None,\n",
+      "production": ""
+    },
+    {
+      "label": "shared scoring diagnostics",
+      "reference": "        \"shared_pair_correct\": 0.0,\n        \"shared_comparisons\": 0.0,\n",
+      "production": ""
+    },
+    {
+      "label": "shared candidate selection",
+      "reference": "        shared_pool = backward and config.shared_negative_pool_size > 0\n        if shared_pool:\n            if shared_generator is None:\n                raise RuntimeError(\"shared negatives require a random generator\")\n            (\n                positive_vectors,\n                negative_vectors,\n                shared_items,\n                shared_vectors,\n            ) = candidate_vectors_with_shared_pool(\n                model,\n                positive_items[begin:end],\n                negatives[begin:end],\n                config.shared_negative_pool_size,\n                shared_generator,\n            )\n        else:\n            positive_vectors, negative_vectors = candidate_vectors(\n                model,\n                positive_items[begin:end],\n                negatives[begin:end],\n            )\n",
+      "production": "        positive_vectors, negative_vectors = candidate_vectors(\n            model,\n            positive_items[begin:end],\n            negatives[begin:end],\n        )\n"
+    },
+    {
+      "label": "shared negative loss",
+      "reference": "        if shared_pool:\n            if user_rows is None or item_correction is None:\n                raise RuntimeError(\n                    \"shared negatives require user rows and item corrections\"\n                )\n            valid = valid_shared_negatives(\n                shared_items,\n                positive_items[begin:end],\n                user_rows[begin:end],\n                selected_states,\n                prepared,\n                known_positive_packed,\n                device,\n            )\n            shared_logits = query_vectors @ shared_vectors.T\n            shared_weights = valid.to(shared_logits.dtype) * item_correction[\n                shared_items.detach().cpu()\n            ].to(device)[None, :]\n            shared_loss = (\n                F.softplus(shared_logits) * shared_weights\n            ).sum(dim=1) / shared_weights.sum(dim=1).clamp_min(1.0e-6)\n            uniform_loss = F.softplus(\n                negative_logits[:, : config.uniform_negatives]\n            ).mean(dim=1)\n            total = config.uniform_negatives + config.inbatch_negatives\n            negative_loss = (\n                config.uniform_negatives * uniform_loss\n                + config.inbatch_negatives * shared_loss\n            ) / total\n            statistics[\"shared_pair_correct\"] += float(\n                (\n                    (positive_logits.detach()[:, None] > shared_logits.detach())\n                    & valid\n                )\n                .sum()\n                .cpu()\n            )\n            statistics[\"shared_comparisons\"] += float(valid.sum().cpu())\n",
+      "production": ""
+    },
+    {
+      "label": "shared pool random stream",
+      "reference": "    shared_generator = torch.Generator(device=\"cpu\").manual_seed(\n        config.seed + 30_000 + epoch\n    )\n",
+      "production": ""
+    },
+    {
+      "label": "shared epoch diagnostics",
+      "reference": "    total_shared_pair_correct = 0.0\n    total_shared_comparisons = 0.0\n",
+      "production": ""
+    },
+    {
+      "label": "shared scoring call",
+      "reference": "                shared_generator=shared_generator,\n                user_rows=flat_user_rows,\n                known_positive_packed=known_positive_packed,\n                item_correction=item_correction,\n",
+      "production": ""
+    },
+    {
+      "label": "shared diagnostic accumulation",
+      "reference": "            total_shared_pair_correct += statistics[\"shared_pair_correct\"]\n            total_shared_comparisons += statistics[\"shared_comparisons\"]\n",
+      "production": ""
+    },
+    {
+      "label": "shared diagnostic report",
+      "reference": "        \"shared_pair_accuracy\": total_shared_pair_correct\n        / max(total_shared_comparisons, 1.0),\n        \"shared_comparisons\": total_shared_comparisons,\n",
+      "production": ""
+    },
+    {
+      "label": "resume objective configuration",
+      "reference": "        stored_negative_values = (\n            stored_config.get(\"uniform_negatives\", 24),\n            stored_config.get(\"inbatch_negatives\", 8),\n            stored_config.get(\"inbatch_correction_power\", 0.5),\n            stored_config.get(\"inbatch_correction_min\", 0.25),\n            stored_config.get(\"inbatch_correction_max\", 4.0),\n            stored_config.get(\"shared_negative_pool_size\", 0),\n        )\n        current_negative_values = (\n            config.uniform_negatives,\n            config.inbatch_negatives,\n            config.inbatch_correction_power,\n            config.inbatch_correction_min,\n            config.inbatch_correction_max,\n            config.shared_negative_pool_size,\n        )\n",
+      "production": ""
+    },
+    {
+      "label": "resume objective comparison",
+      "reference": "            or stored_negative_values != current_negative_values\n",
+      "production": ""
+    },
+    {
+      "label": "resume objective log",
+      "reference": "                \"negative sampling \"\n                f\"{stored_negative_values}->{current_negative_values}; \"\n",
+      "production": ""
+    },
+    {
+      "label": "shared pool CLI argument",
+      "reference": "        \"--shared-negative-pool-size\",\n        type=int,\n        default=Config.shared_negative_pool_size,\n    )\n    parser.add_argument(\n",
+      "production": ""
+    },
+    {
+      "label": "shared pool CLI validation",
+      "reference": "        or args.shared_negative_pool_size < 0\n",
+      "production": ""
+    },
+    {
+      "label": "shared pool config binding",
+      "reference": "        shared_negative_pool_size=args.shared_negative_pool_size,\n",
+      "production": ""
+    },
+    {
+      "label": "negative sampling architecture label",
+      "reference": "                        \"24-uniform-plus-8-weight-current-positive-shared-pool\"\n",
+      "production": "                        \"24-uniform-plus-8-propensity-corrected-inbatch\"\n"
+    }
+  ]
+}
