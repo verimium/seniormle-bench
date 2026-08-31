@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "environment": "Harbor Linux CPU, PyTorch 2.8.0, seed 29",
+  "models": {
+    "production_two_tower": {
+      "source_sha256": "63263e32b0b30c1451d68491a8a27d3f710431de8eadcd4240b5b439acad1540",
+      "public_validation": {
+        "quality_ndcg@10": 0.021280,
+        "quality_users": 4263
+      },
+      "hidden_test": {
+        "quality_ndcg@10": 0.016196,
+        "quality_users": 3987
+      }
+    },
+    "shared_negative_reference_two_tower": {
+      "source_sha256": "56d7d8fac3c72ca778ca8c261c91d173d938bc1b74955e1e28eb2c31d71eaf32",
+      "public_validation": {
+        "quality_ndcg@10": 0.022693,
+        "quality_users": 4263
+      },
+      "hidden_test": {
+        "quality_ndcg@10": 0.016939,
+        "quality_users": 3987
+      }
+    }
+  }
+}

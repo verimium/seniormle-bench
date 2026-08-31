@@ -1,0 +1,222 @@
+{
+  "files": {
+    ".github/workflows/validate.yml": {
+      "executable": false,
+      "sha256": "6f20ea09e26d8216cb8c6440c9886777dbada8d9eaa9700a6b5778d31646b314"
+    },
+    ".gitignore": {
+      "executable": false,
+      "sha256": "ea21fa9c3f23c93eb4cd18f2d246f8683130f9cf7900266530f0eb138ed4fc11"
+    },
+    "README.md": {
+      "executable": false,
+      "sha256": "e06c30b852674b75af3081f9ae50a7928ee546077ac5cdbb9df17b30ac2e95b9"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/build_task.py": {
+      "executable": false,
+      "sha256": "127130b192ef76e1427386ab9830e7689844825b81f8435924a6eb499f105818"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/environment/Dockerfile": {
+      "executable": false,
+      "sha256": "650874ead83a6d2a889055fa32ff0ee1ffc3dda96c1cc326b9d06c1e4f81acff"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/environment/public/evaluate_public.py": {
+      "executable": false,
+      "sha256": "a5a5d79c1af0f6670ae86cc487f3e4474b5156747f0d20cc3b0ca4bf4d2c6514"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/environment/public/ranking_evaluation.py": {
+      "executable": false,
+      "sha256": "23bb55630f9a2c3ac5dad2cdbf4e77e2ce6564b16c4245026759ab5500c086e3"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/environment/public/upstream/build_eligibility.py": {
+      "executable": false,
+      "sha256": "528af7f51012fa23f12a7384621e68afb24b87b5e860c477cb075387695478f5"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/requirements.txt": {
+      "executable": false,
+      "sha256": "534f0a7ca7d33e70ce33ba508596ea2750f7bae277a0a5a01d18911d0a25e450"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/solution/solve.sh": {
+      "executable": true,
+      "sha256": "e54e1535e00e14bc6f97a6c18e8cbf99ffad458840ab382d66ea95eee4146349"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/task.toml": {
+      "executable": false,
+      "sha256": "37224782878263c168e5567013ecf4417e63ec25bc9769f37e46aeb1da7bfc3d"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/tests/Dockerfile": {
+      "executable": false,
+      "sha256": "24702433c9624881490bd45dabc094fe88d56092346c8f1ca7811b7d0986e44e"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/tests/evaluate_submission.py": {
+      "executable": false,
+      "sha256": "8fa549ab67dba5cf7f640cae22ec7481f1bfe5669e1c1daf22547d31df3786fd"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/harbor/tests/test.sh": {
+      "executable": true,
+      "sha256": "82f669b888692ec6789b03b150c7356ac2f0aa9450b4a2ced0596186fc35cfef"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/instruction.md": {
+      "executable": false,
+      "sha256": "5c9b926e2ef22863deb0f84b2f0ed3523e55b577fa130bfddeade302dd500e94"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/private/reference_solution/README.md": {
+      "executable": false,
+      "sha256": "0f25fae533d4c201953fdd6848c82f19d1f919c8aadda9fb6db81363f40c2796"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/task_source/private/reference_solution/reference_solver.py": {
+      "executable": false,
+      "sha256": "358fe0e2b86dd81ebe1b1e330add64cb2f82535dd4ccf1f1c13955d76246f665"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/build_task.py": {
+      "executable": false,
+      "sha256": "216004436c565c7e2829f5bb8b5615319a7e5260709eeb810d8515e6a1046919"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/harbor/solution/solve.sh": {
+      "executable": true,
+      "sha256": "7cbfc48948e5bd0a449a3aa8c727df45675c6c686ee8fffce25dc8831766c6c8"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/harbor/task.toml": {
+      "executable": false,
+      "sha256": "1865c258dada0862eb34a4caa62f367d5ebb2c3c0f232c1f023dab36ee2bf069"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/harbor/tests/Dockerfile": {
+      "executable": false,
+      "sha256": "a616358f34da57c974a44cb44c3bd7e17b7270aabb54a135f388265c795b5bff"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/harbor/tests/evaluate_submission.py": {
+      "executable": false,
+      "sha256": "8fa549ab67dba5cf7f640cae22ec7481f1bfe5669e1c1daf22547d31df3786fd"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/harbor/tests/test.sh": {
+      "executable": true,
+      "sha256": "82f669b888692ec6789b03b150c7356ac2f0aa9450b4a2ced0596186fc35cfef"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/instruction.md": {
+      "executable": false,
+      "sha256": "da336db1b567cbf6ecdc002db6e58fc359a41097d7d96ffafbd8654142cc7005"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/private/reference_solution/README.md": {
+      "executable": false,
+      "sha256": "4ab27daa70f68a21575cb8612f4d064f9944d8419edf873f457e9087be4c7d8e"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/README.md": {
+      "executable": false,
+      "sha256": "21344875192d23a3302bff1ea0d7562e0973fe6b250a06ca32a14adf351bbf0b"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/__init__.py": {
+      "executable": false,
+      "sha256": "8adccc971c4e790b132bd1ba1bd0d6821f4d22b7a24b4b5891ea0b20d997f006"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/assets/build_eligibility.py": {
+      "executable": false,
+      "sha256": "528af7f51012fa23f12a7384621e68afb24b87b5e860c477cb075387695478f5"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/assets/environment.Dockerfile": {
+      "executable": false,
+      "sha256": "0e89b213dd4f18463f1b7a5188b2ba8ad68845ba0c2e96a246e7b1450244db93"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/assets/evaluate_public.py": {
+      "executable": false,
+      "sha256": "a5a5d79c1af0f6670ae86cc487f3e4474b5156747f0d20cc3b0ca4bf4d2c6514"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/assets/ranking_evaluation.py": {
+      "executable": false,
+      "sha256": "23bb55630f9a2c3ac5dad2cdbf4e77e2ce6564b16c4245026759ab5500c086e3"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/assets/reference_solver.py": {
+      "executable": false,
+      "sha256": "1c6dab4b61b147366ad545b434ebd39eca00d12fb57fcf733b2c5f2536b8ca6c"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/assets/requirements.txt": {
+      "executable": false,
+      "sha256": "41fb816338c7a2b817d4baba4c9459799851109010b9ed0591db05906e47cb54"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/assets/two_tower_model.py": {
+      "executable": false,
+      "sha256": "944adf51f9fc61fcbb8392c5c62243b9cc74b5e2ca2f403b5722967f14773f16"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/task_source/yambda_two_tower/builder.py": {
+      "executable": false,
+      "sha256": "7f6e88c44faa3e7149566c4efe8177b86bb2008d4e17790b9dae7769301ad3ad"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/build_task.py": {
+      "executable": false,
+      "sha256": "f44847c071879d8f01accfc08f38db4b46f804b72cd7d5a4df85b1e0dffd7462"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/harbor/solution/solve.sh": {
+      "executable": true,
+      "sha256": "10a5375fda50456d22ca42c2848ce8d7df542d342f4f7c04662ddcd671af4f71"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/harbor/task.toml": {
+      "executable": false,
+      "sha256": "7f1a486ae8622e075f06d2e83cff5a3443da4130efff73ce2e97ea28c7e98ca8"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/harbor/tests/Dockerfile": {
+      "executable": false,
+      "sha256": "b91aad5264ae111397aad4f5cd260dfd630e5e85e072a99b736733c4d2e2036c"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/harbor/tests/evaluate_submission.py": {
+      "executable": false,
+      "sha256": "272e651aaed8b2262cc03710d8be9d33e9b3fb37b14069b6591526815fdf0ac3"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/harbor/tests/test.sh": {
+      "executable": true,
+      "sha256": "82f669b888692ec6789b03b150c7356ac2f0aa9450b4a2ced0596186fc35cfef"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/instruction.md": {
+      "executable": false,
+      "sha256": "274ffbb0117547466bb876e8d6f3930977afd8ae643c77bede5aafd8934a753e"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/model_overlay.json": {
+      "executable": false,
+      "sha256": "7fbcb0655c29e9be270a36ee8f225a7c1b88de3e01ae431a458bb63e6176002c"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/private/README.md": {
+      "executable": false,
+      "sha256": "aa7b97b817dc381d27cb0aa4b205d72b961de8b251e056e4f12b729595841712"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/private/model_metrics.json": {
+      "executable": false,
+      "sha256": "790fb74ba52d36542d312c0ac3bc3d397d2cb42061eaa4ebf36a7e5bd82c359f"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/private/reference_solution/reference_solver.py": {
+      "executable": false,
+      "sha256": "56d7d8fac3c72ca778ca8c261c91d173d938bc1b74955e1e28eb2c31d71eaf32"
+    },
+    "rl-environment/environments/yambda-discovery-ranking-v01/yambda-discovery-ranking-two-tower-base/yambda-discovery-ranking-two-tower-case-1/task_source/private/test_shared_negative_pool.py": {
+      "executable": false,
+      "sha256": "694c7261241a48283759cfca71f9dfba1b88f5bbee71124e5d43d4adb27027a1"
+    },
+    "rl-environment/harbor-requirements.txt": {
+      "executable": false,
+      "sha256": "0698c36dd48ea1ded1a01285d0eebf4ac68d9a0f6a52be832e8ded4c0647b14f"
+    },
+    "rl-environment/scripts/harbor_task.py": {
+      "executable": false,
+      "sha256": "481d88f354a25272c9097e05c6c25f14d0f9b3efab2a5d022563c7472c14cda5"
+    },
+    "rl-environment/scripts/validate_task_package.py": {
+      "executable": false,
+      "sha256": "195d92e09f71c3328d51bb48b59e85f35032ea5861896e020d6afc7361ebf67d"
+    },
+    "rl-environment/scripts/verifier_result.py": {
+      "executable": false,
+      "sha256": "bed082f5d3b3de5da9275d08606ad4d6f6e4d6841db961d963413eea9fcbb0ed"
+    },
+    "scripts/validate_distribution.py": {
+      "executable": true,
+      "sha256": "c0e797002b479d9a13ac8857363c6b081d2584fce96912a018d34ff2ff01079f"
+    },
+    "setup.sh": {
+      "executable": true,
+      "sha256": "5fa5df4d1862c34f2f56aebc4be10cdd66cd12b762a48d51e51d599e8bfe25fc"
+    }
+  },
+  "schema_version": 1,
+  "task_ids": [
+    "yambda-discovery-ranking-two-tower-base",
+    "yambda-discovery-ranking-two-tower-case-1",
+    "yambda-discovery-ranking-v01"
+  ]
+}

@@ -1,36 +1,71 @@
 # SeniorMLE-Bench
 
-A benchmark for long-horizon ML engineering agents.
+A benchmark for long-horizon machine-learning engineering agents.
 
-Each task places a model inside a real production-shaped ML environment: data,
-code, constraints, verifier, and a measurable outcome. The score reflects
-whether the agent can ship working ML improvements, not whether it can answer
-benchmark-style questions.
+This repository intentionally contains task code only. Dataset files and built
+Harbor tasks are not stored in Git. `setup.sh` downloads the pinned Yambda
+source files directly from their origin, verifies their SHA-256 checksums, and
+materializes a complete task under `tasks/`.
 
-## What makes it different
+The source tree includes evaluator-only build inputs. Give Harbor the generated
+`tasks/<task-id>` directory; do not mount this repository itself into the agent
+environment.
 
-**Real ML systems** — Tasks are drawn from recommendation, ranking, retrieval,
-and data workflows.
+## Prerequisites
 
-**Runnable environments** — Each task ships with code, data, solution path, and
-isolated verifier.
+- Python 3
+- [`uv`](https://docs.astral.sh/uv/)
+- Docker
+- Harbor 0.22.0 for task execution
 
-**Objective scoring** — Agents are judged by production-shaped metrics such as
-ranking quality, correctness, and runtime constraints.
+## Build a task
 
-## Task layout
+List the available task IDs:
 
-Every task is a self-contained directory:
-
-```
-<task-name>/
-  instruction.md    # what the agent is asked to do
-  task.toml         # task metadata
-  environment/      # Dockerfile + requirements for the agent's workspace
-  solution/         # reference solution and solve.sh
-  tests/            # isolated verifier: scoring, metrics, test.sh
+```sh
+./setup.sh --list
 ```
 
-## Contact us
+Build one task:
 
-Send an email to [hello@verimium.com](mailto:hello@verimium.com).
+```sh
+./setup.sh yambda-discovery-ranking-two-tower-base
+```
+
+The first build downloads the source dataset and creates a pinned Python 3.12
+authoring environment. Later builds reuse both. The resulting Harbor task is
+written to:
+
+```text
+tasks/yambda-discovery-ranking-two-tower-base/
+```
+
+Run it with Harbor after setup completes:
+
+```sh
+harbor run \
+  --path tasks/yambda-discovery-ranking-two-tower-base \
+  --agent codex \
+  --model gpt-5.6-sol
+```
+
+Additional arguments after the task ID are passed to its builder. For example,
+`--force-download` replaces the cached upstream files. `SENIORMLE_DATA_DIR`,
+`SENIORMLE_ENVS_DIR`, and `SENIORMLE_TASKS_DIR` can relocate the generated
+directories.
+
+## Repository layout
+
+```text
+setup.sh                         # task bootstrap entrypoint
+source-manifest.json             # hashes for every distributed source file
+rl-environment/environments/     # deterministic task builders
+rl-environment/scripts/          # shared contracts and validators
+tasks/                           # generated locally; ignored by Git
+```
+
+Run the code-only distribution check with:
+
+```sh
+python3 scripts/validate_distribution.py .
+```

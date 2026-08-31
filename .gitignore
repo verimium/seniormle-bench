@@ -1,0 +1,9 @@
+.data/
+.venvs/
+tasks/
+jobs/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+.DS_Store
